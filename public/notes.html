@@ -13,6 +13,34 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-dark bg-dark">
+    <h3 class="text-white">Note Taker</h3>
+    <!-- <button type="button" class="btn btn-light btn-large save-note"></button> -->
+    <button type="button" class="btn btn-light btn-large icons i fas fa-pencil-alt"></button>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col list-container list-group">
+        saved notes
+      </div>
+      <div class="col">
+
+        <div class="row note-title">
+            <div class="input-group input-group-lg">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Note Title">
+            </div>
+        </div>
+        <div class="row note-textarea">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Note Text">
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="/assets/js/index.js"></script>
 </body>
