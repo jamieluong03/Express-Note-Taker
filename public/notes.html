@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
@@ -21,20 +21,15 @@
 
   <div class="container">
     <div class="row">
-      <div class="col list-container list-group">
-        saved notes
+      <div class="col-4 card list-container list-group">
       </div>
-      <div class="col">
-
-        <div class="row note-title">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Note Title">
-            </div>
+      <div class="col-8">
+        
+        <div class="row note-title input-group input-group-lg">
+          <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Note Title">
         </div>
-        <div class="row note-textarea">
-            <div class="input-group input-group-lg">
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Note Text">
-              </div>
+        <div class="row note-textarea input-group input-group-lg">
+          <textarea type="text" id="entry" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Note Text"></textarea>
         </div>
       </div>
     </div>
