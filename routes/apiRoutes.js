@@ -1,4 +1,4 @@
-var journalData = require("../journal.json");
+var journalData = require("../db/journalData");
 
 module.exports = function(app) {
 
