@@ -5,10 +5,26 @@ var $newNoteBtn = $(".new-note");
 var $noteList = $(".list-container .list-group");
 
 // activeNote is used to keep track of the note in the textarea
-var activeNote = {};
+// var activeNote = {};
 
 // A function for getting all notes from the db
 var getNotes = function() {
+    $.ajax({ url: "/api/notes", method: "GET" })
+        .then(function(journalData){
+            console.log(journalData);
+
+            for (var i=0; i < journalData.length; i++){
+                var listNote = $("<li class='list-group-item mt-4'>");
+
+                listNote.append(
+                    $("<h5>").text(journalData[i].title),
+                    $("<h5>").text(journalData[i].note)
+                );
+
+            $noteList.append(listNote);
+            
+            };
+        })
   
 };
 
@@ -29,7 +45,20 @@ var renderActiveNote = function() {
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
-  
+  event.preventDefault();
+
+  var savedText = {
+      title: $noteTitle.val().trim(),
+      note: $noteText.val().trim()
+  };
+
+//   activeNote.push(savedText);
+  console.log(savedText);
+
+  $.post("/api/notes", savedText,
+  function(){
+      $noteText.val("");
+  })
 };
 
 // Delete the clicked note

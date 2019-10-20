@@ -1,7 +1,7 @@
 var journalArray = [
     {
         title: "Morning Routine",
-        body: "wake up at 7AM"
+        note: "wake up at 7AM"
     }
 ];
 
