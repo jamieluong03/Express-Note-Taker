@@ -11,7 +11,7 @@ var $noteList = $(".list-container .list-group");
 var getNotes = function() {
     $.ajax({ url: "/api/notes", method: "GET" })
         .then(function(journalData){
-            console.log(journalData);
+            // console.log(journalData);
 
             for (var i=0; i < journalData.length; i++){
                 var listNote = $("<li class='list-group-item mt-4'>");
@@ -73,7 +73,7 @@ var handleNoteDelete = function(event) {
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 var handleNewNoteView = function() {
-    event.preventDefault();
+    // event.preventDefault();
 
     $.ajax({url: "/api/notes", method: "POST"})
     .then(function(){
@@ -85,7 +85,7 @@ var handleNewNoteView = function() {
 // If a note's title or text are empty, hide the save button
 // Or else show it
 var handleRenderSaveBtn = function() {
-  if ($noteText == ""){
+  if ($noteText == true){
       $(".save-note").attr("display", "block");
   } else {
       $(".save-note").attr("display", "none");
@@ -105,7 +105,7 @@ var handleRenderSaveBtn = function() {
 $saveNoteBtn.on("click", handleNoteSave());
 $noteList.on("click", ".list-group-item", getNotes());
 $newNoteBtn.on("click", handleNewNoteView());
-$noteList.on("click", ".delete-note", handleNoteDelete);
+$noteList.on("click", ".delete-note", handleNoteDelete());
 // $noteTitle.on("keyup", handleRenderSaveBtn);
 // $noteText.on("keyup", handleRenderSaveBtn);
 
