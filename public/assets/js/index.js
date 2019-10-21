@@ -45,7 +45,6 @@ var getNotes = function() {
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
 //   event.preventDefault();
-
   var savedText = {
       title: $noteTitle.val().trim(),
       note: $noteText.val().trim()
@@ -56,8 +55,8 @@ var handleNoteSave = function() {
 
   $.post("/api/notes", savedText,
   function(){
-      $noteTitle.val("");
-      $noteText.val("");
+      $noteTitle.val();
+      $noteText.val();
   })
 };
 
@@ -85,10 +84,10 @@ var handleNewNoteView = function() {
 // If a note's title or text are empty, hide the save button
 // Or else show it
 var handleRenderSaveBtn = function() {
-  if ($noteText == true){
-      $(".save-note").attr("display", "block");
+  if ($noteText.val() == ""){
+      $(".save-note").attr("style", "display:none");
   } else {
-      $(".save-note").attr("display", "none");
+      $(".save-note").attr("style", "display:inline-block");
   }
 };
 
@@ -102,12 +101,12 @@ var handleRenderSaveBtn = function() {
   
 // };
 
-$saveNoteBtn.on("click", handleNoteSave());
-$noteList.on("click", ".list-group-item", getNotes());
-$newNoteBtn.on("click", handleNewNoteView());
-$noteList.on("click", ".delete-note", handleNoteDelete());
-// $noteTitle.on("keyup", handleRenderSaveBtn);
-// $noteText.on("keyup", handleRenderSaveBtn);
+$saveNoteBtn.on("click", handleNoteSave);
+$noteList.on("click", ".list-group-item", getNotes);
+$newNoteBtn.on("click", handleNewNoteView);
+$noteList.on("click", ".delete-note", handleNoteDelete);
+$noteTitle.on("keyup", handleRenderSaveBtn);
+$noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 // getAndRenderNotes();
