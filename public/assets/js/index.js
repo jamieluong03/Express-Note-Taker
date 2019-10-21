@@ -25,7 +25,6 @@ var getNotes = function() {
             
             };
         })
-  
 };
 
 // A function for saving a note to the db
@@ -45,7 +44,7 @@ var getNotes = function() {
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
-  event.preventDefault();
+//   event.preventDefault();
 
   var savedText = {
       title: $noteTitle.val().trim(),
@@ -85,9 +84,13 @@ var handleNewNoteView = function() {
 
 // If a note's title or text are empty, hide the save button
 // Or else show it
-// var handleRenderSaveBtn = function() {
-  
-// };
+var handleRenderSaveBtn = function() {
+  if ($noteText == ""){
+      $(".save-note").attr("display", "block");
+  } else {
+      $(".save-note").attr("display", "none");
+  }
+};
 
 // Render's the list of note titles
 // var renderNoteList = function(notes) {
