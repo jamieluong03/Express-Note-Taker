@@ -8,8 +8,9 @@ var $noteList = $("#tableData");
 // var savedText = {};
 
 // A function for getting all notes from the db
-var getNotes = function() {
-   
+var getNotes = function(journalData) {
+   $noteTitle = journalData.title;
+   $noteText = journalData.note;
 };
 
 // A function for saving a note to the db
@@ -88,7 +89,7 @@ var getAndRenderNotes = function() {
         for (var i=0; i < journalData.length; i++){
             var listNote = $("<li class='list-group-item mt-4'>");
             listNote.append(
-                $("<button class='far fa-trash-alt float-right'>"),
+                $("<button class='far fa-trash-alt float-right delete-note'>"),
                 $("<h4>").text(journalData[i].title),
                 // $("<h4>").text(journalData[i].note)
             );
