@@ -67,6 +67,7 @@ html, body {
   border-right: none;
   padding: 20px;
   cursor: pointer;
+  width:100%;
 }
 
 textarea {
