@@ -14,5 +14,12 @@ module.exports = function(app) {
     });
 
     // delete data into html
+    app.delete("/api/notes/:deleteNote", function (req, res) {
+        let eraseMe = req.params.deleteNote;
+        console.log(eraseMe);
+        journalData = journalData.filter( x => x.title !== eraseMe);
+    });
+
+
 
 }

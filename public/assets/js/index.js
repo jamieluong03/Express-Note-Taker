@@ -60,8 +60,15 @@ var handleNoteSave = function() {
 };
 
 // Delete the clicked note
-var handleNoteDelete = function(event) {
-  
+var handleNoteDelete = function() {
+    var selectedNote = $(this).attr("id");
+
+    $.ajax ({ url: "/api/notes/" + selectedNote, 
+    method: "DELETE"});
+    $noteList.empty();
+
+    getAndRenderNotes();
+
 };
 
 // Sets the activeNote and displays it
@@ -86,11 +93,6 @@ var handleRenderSaveBtn = function() {
   }
 };
 
-// Render's the list of note titles
-// var renderNoteList = function(notes) {
-  
-// };
-
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function() {
     $.ajax({ url: "/api/notes", method: "GET" })
@@ -102,7 +104,7 @@ var getAndRenderNotes = function() {
             var listNote = $("<li class='list-group-item mt-4'>");
             listNote.attr("data-name", journalData[i].title);
             listNote.append(
-                $("<button class='far fa-trash-alt float-right delete-note'>"),
+                $("<button class='far fa-trash-alt float-right delete-note' id="+ journalData[i].title + ">"),
                 $("<h4>").text(journalData[i].title),
                 // $("<h4>").text(journalData[i].note)
             );
