@@ -5,7 +5,7 @@ var $newNoteBtn = $(".new-note");
 var $noteList = $(".list-container .list-group");
 
 // activeNote is used to keep track of the note in the textarea
-// var activeNote = {};
+// var savedText = {};
 
 // A function for getting all notes from the db
 var getNotes = function() {
@@ -29,7 +29,8 @@ var getNotes = function() {
 
 // A function for saving a note to the db
 // var saveNote = function(note) {
-  
+   
+
 // };
 
 // A function for deleting a note from the db
@@ -57,7 +58,9 @@ var handleNoteSave = function() {
   function(){
       $noteTitle.val();
       $noteText.val();
-  })
+  });
+
+  document.getElementsByTagName('form')[0].reset();
 };
 
 // Delete the clicked note
@@ -73,12 +76,13 @@ var handleNoteDelete = function(event) {
 // Sets the activeNote to and empty object and allows the user to enter a new note
 var handleNewNoteView = function() {
     // event.preventDefault();
+    document.getElementsByTagName('form')[0].reset();
 
-    $.ajax({url: "/api/notes", method: "POST"})
-    .then(function(){
-        $noteTitle.empty();
-        $noteText.empty();
-    })
+    // $.ajax({url: "/api/notes", method: "POST"})
+    // .then(function(){
+    //     $noteTitle.empty();
+    //     $noteText.empty();
+    // })
 };
 
 // If a note's title or text are empty, hide the save button
