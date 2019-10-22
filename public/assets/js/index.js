@@ -2,7 +2,7 @@ var $noteTitle = $(".note-title");
 var $noteText = $(".note-textarea");
 var $saveNoteBtn = $(".save-note");
 var $newNoteBtn = $(".new-note");
-var $noteList = $(".list-container .list-group");
+var $noteList = $("#tableData");
 
 // activeNote is used to keep track of the note in the textarea
 // var savedText = {};
@@ -11,7 +11,8 @@ var $noteList = $(".list-container .list-group");
 var getNotes = function() {
     $.ajax({ url: "/api/notes", method: "GET" })
         .then(function(journalData){
-            // console.log(journalData);
+            console.log(journalData);
+            console.log($noteList);
 
             for (var i=0; i < journalData.length; i++){
                 var listNote = $("<li class='list-group-item mt-4'>");
@@ -24,6 +25,7 @@ var getNotes = function() {
             $noteList.append(listNote);
             
             };
+            $noteList.append(journalData);
         })
 };
 
@@ -114,3 +116,4 @@ $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 // getAndRenderNotes();
+getNotes();
