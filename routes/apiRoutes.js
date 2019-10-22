@@ -13,4 +13,6 @@ module.exports = function(app) {
         res.json(true);
     });
 
+    // delete data into html
+
 }

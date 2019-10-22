@@ -8,9 +8,19 @@ var $noteList = $("#tableData");
 // var savedText = {};
 
 // A function for getting all notes from the db
-var getNotes = function(journalData) {
-   $noteTitle = journalData.title;
-   $noteText = journalData.note;
+var getNotes = function() {
+    var selectedNote = $(this).attr("data-name");
+    console.log(selectedNote);
+
+    $.get("/api/notes", function(data){
+        for (var i=0; i< data.length; i++){
+            if (data[i].title === selectedNote){
+             $noteTitle.val(data[i].title);
+             $noteText.val(data[i].note);   
+            }
+        }
+    })
+
 };
 
 // A function for saving a note to the db
@@ -20,7 +30,9 @@ var getNotes = function(journalData) {
 // var deleteNote = function(title) {};
 
 // // If there is an activeNote, display it, otherwise render empty inputs
-// var renderActiveNote = function() {};
+var renderActiveNote = function(data) {
+    return selectedNote;
+};
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
@@ -53,9 +65,9 @@ var handleNoteDelete = function(event) {
 };
 
 // Sets the activeNote and displays it
-// var handleNoteView = function() {
+var handleNoteView = function() {
   
-// };
+};
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 var handleNewNoteView = function() {
@@ -88,6 +100,7 @@ var getAndRenderNotes = function() {
 
         for (var i=0; i < journalData.length; i++){
             var listNote = $("<li class='list-group-item mt-4'>");
+            listNote.attr("data-name", journalData[i].title);
             listNote.append(
                 $("<button class='far fa-trash-alt float-right delete-note'>"),
                 $("<h4>").text(journalData[i].title),
