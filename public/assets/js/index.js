@@ -4,8 +4,6 @@ var $saveNoteBtn = $(".save-note");
 var $newNoteBtn = $(".new-note");
 var $noteList = $("#tableData");
 
-// activeNote is used to keep track of the note in the textarea
-// var savedText = {};
 
 // A function for getting all notes from the db
 var getNotes = function() {
@@ -20,29 +18,15 @@ var getNotes = function() {
             }
         }
     })
-
-};
-
-// A function for saving a note to the db
-// var saveNote = function(note) {};
-
-// A function for deleting a note from the db
-// var deleteNote = function(title) {};
-
-// // If there is an activeNote, display it, otherwise render empty inputs
-var renderActiveNote = function(data) {
-    return selectedNote;
 };
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
-//   event.preventDefault();
   var savedText = {
       title: $noteTitle.val().trim(),
       note: $noteText.val().trim()
   };
 
-//   activeNote.push(savedText);
   console.log(savedText);
 
   $.post("/api/notes", savedText,
@@ -71,10 +55,6 @@ var handleNoteDelete = function() {
 
 };
 
-// Sets the activeNote and displays it
-var handleNoteView = function() {
-  
-};
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 var handleNewNoteView = function() {
